@@ -1,0 +1,15 @@
+---
+- name: install basic tools
+  apt:
+    name: [maven, python-pip, openjdk-8-jdk, zip, python-pip ]
+    state: present
+
+- name: install aws tools
+  pip:
+    name: [ boto, boto3, awscli, awsebcli, ansible ]
+    state: present
+
+- name: set java 8 as default version
+  alternatives:
+    name: java
+    path: /usr/lib/jvm/java-1.8.0-openjdk-amd64/bin/java
